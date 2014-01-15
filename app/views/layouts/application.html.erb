@@ -8,14 +8,27 @@
 </head>
 <body>
 
+<% if flash.now[:errors] %>
+<ul>
+	<% flash.now[:errors].each do |err| %>
+		<li><%= err %>
+	<% end %>
+</ul>
+<% end %>
+
 <%= yield %>
 
 
 <br><br><br>
+
+
 <% if logged_in? %>
 	<p> Logged in! <%= current_user.username %></p>
+
+	<%= button_to "Log Out", session_url, :method => :delete %>
 <% else %>
 	<p> Log in? </p>
+	<%= button_to "Log In", new_session_url, :method => :get %>
 <% end %>
 </body>
 </html>

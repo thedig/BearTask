@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   attr_accessible :password, :session_token, :username
 
   validates :username, :session_token, :password_digest, :presence => true
+  validates :password, :length => {:minimum => 6}
 
   before_validation :reset_session_token
 
@@ -27,7 +28,7 @@ class User < ActiveRecord::Base
   end
 
   def is_password?(pt)
-  	BCrypt.Password.new(self.password_digest).is_password?(pt)
+  	BCrypt::Password.new(self.password_digest).is_password?(pt)
   end
 
   def password=(pt)
