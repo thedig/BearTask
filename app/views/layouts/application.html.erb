@@ -10,5 +10,12 @@
 
 <%= yield %>
 
+
+<br><br><br>
+<% if logged_in? %>
+	<p> Logged in! <%= current_user.username %></p>
+<% else %>
+	<p> Log in? </p>
+<% end %>
 </body>
 </html>
