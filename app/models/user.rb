@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   before_validation :reset_session_token
 
+  has_many :boards
+
   def self.generate_token
   	SecureRandom.urlsafe_base64
   end
