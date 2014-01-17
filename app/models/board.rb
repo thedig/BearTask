@@ -15,4 +15,7 @@ class Board < ActiveRecord::Base
   attr_accessible :comments, :public, :title, :user_id
 
   belongs_to :user
+  has_many :lists
+
+  has_many :board_memberships
 end

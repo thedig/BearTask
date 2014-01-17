@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: cards
+#
+#  id          :integer          not null, primary key
+#  description :string(255)      not null
+#  due_date    :date             not null
+#  card_id     :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  description: MyString
+  due_date: 2014-01-16
+
+two:
+  description: MyString
+  due_date: 2014-01-16
