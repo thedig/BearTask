@@ -1,0 +1,18 @@
+<h2>Create a board</h2>
+
+<form action="<%= boards_url %>" method="POST">
+	<label for="title">Board Title</label>
+	<input type="text" id="title" name"board[title]">
+	<br>
+	<label for="public"></label>
+	<input type="radio" name="board[public]" value="true">Public</input>
+	<input type="radio" name="board[public]" value="false">Private</input>
+	<br>
+	<label for="comments">Allow Comments?</label>
+	<input type="radio" name="board[comments]" value="true">Yes</input>
+	<input type="radio" name="board[comments]" value="false">No</input>
+	<br>
+	<input type="submit">
+
+
+</form>
