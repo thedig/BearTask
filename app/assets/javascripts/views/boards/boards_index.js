@@ -11,7 +11,7 @@ MyTrello.Views.BoardsIndex = Backbone.View.extend({
 	},
 
 	clickButton: function() {
-
+		alert('click click');
 	},
 
 	render: function() {

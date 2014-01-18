@@ -5,15 +5,20 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		"": "boardIndex",
-		"hello": "what"
+		"boards/new": "boardNew",
+		"boards/:id/edit": "boardEdit",
+		"boards/:id": "boardShow"
 	},
 
-	boardIndex: function(){
-		this.$rootEl.html("<h2>TEST TEST TEST</h2>");
+	boardIndex: function() {
+		var view = new MyTrello.Views.BoardsIndex({collection: MyTrello.boards});
+		this.$rootEl.html(view.render().$el);
 	},
 
-	what: function() {
-		alert("GAHHHH");
+	boardShow: function(id) {
+		var board = MyTrello.boards.get(id);
+		var view = new MyTrello.Views.BoardShow({model: board});
+		this.$rootEl.html(view.render().$el);
 	}
 
 })
