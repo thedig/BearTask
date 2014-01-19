@@ -1,9 +1,4 @@
-<h2><%= board.title %></h2>
-
-<% list_array = []; %>
-<% for(i = 0; i < board_lists.length; i++) { %>
-	<%  %>
-<% } %>
+<h2><%= board.get('title') %></h2>
 
 <ul>
 <% board_lists.each(function(list){ %>
@@ -15,4 +10,5 @@
 	</li>
 
 <% }); %>
+
 </ul>

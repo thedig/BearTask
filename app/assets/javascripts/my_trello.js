@@ -8,7 +8,7 @@ window.MyTrello = {
     MyTrello.boards.fetch({
     	success: function() {
     		new MyTrello.Routers.Router({
-    			$rootEl: $("#content")
+    			"$rootEl": $("#content")
     		});
     		Backbone.history.start();
     	}
