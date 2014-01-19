@@ -23,7 +23,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		}
 		
 		this.$el.html(this.template({
-			board_lists: this.model.get('lists'),
+			board_lists: list_array,
 			board: this.model
 		}));
 		return this;
@@ -32,7 +32,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	showList: function(event) {
 		event.preventDefault();
 		var listId = $(event.currentTarget).data('id');
-		Backbone.history.navigate('boards/' + this.model.id + )
+		Backbone.history.navigate('boards/' + this.model.id)
 	}
 
 
