@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	before_filter :require_current_user!, :only => [:show]
+	before_filter :require_no_current_user!, :only => [:create, :new]
 	
 	def create
 		@user = User.new(params[:user])
@@ -11,15 +13,10 @@ class UsersController < ApplicationController
 		end
 	end
 
-	def index
-		render :index
-	end
-
 	def new
 		render :new
 	end
 
-	# require login? - profile?
 	def show
 		@user = User.find(params[:id])
 		render :show
