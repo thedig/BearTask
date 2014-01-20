@@ -18,13 +18,17 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 
 	boardShow: function(id) {
 		var board = MyTrello.boards.get(id);
-		// if (!board) {
-		// 	this.boardIndex();
-		// } else {
+		MyTrello.boards.each(function(b){
+			console.log(b.get('title'));
+			console.log("HI HI HI");
+		})
+		if (!board) {
+			this.boardIndex();
+		} else {
 			var view = new MyTrello.Views.BoardShow({model: board});
 			this.$rootEl.html(view.render().$el);
 			// this._swapView(view);	
-		// }
+		}
 		
 	},
 
