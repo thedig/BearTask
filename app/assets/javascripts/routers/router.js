@@ -22,30 +22,25 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 			collection: MyTrello.boards,
 			model: newBoard
 		});
-		this.$rootEl.html(view.render().$el);
+		this._swapView(view);	
 	},
 
 	boardShow: function(id) {
 		var board = MyTrello.boards.get(id);
-		MyTrello.boards.each(function(b){
-			console.log(b.get('title'));
-			console.log("HI HI HI");
-		})
 		if (!board) {
 			this.boardIndex();
 		} else {
 			var view = new MyTrello.Views.BoardShow({model: board});
-			this.$rootEl.html(view.render().$el);
-			// this._swapView(view);	
+			this._swapView(view);	
 		}
 		
 	},
 
-  // _swapView: function(view){
-  //   this._currentView && this._currentView.remove();
-  //   this._currentView = view;
-  //   this.$rootEl.html(view.render().$el);
-  // }
+  _swapView: function(view){
+    this._currentView && this._currentView.remove();
+    this._currentView = view;
+    this.$rootEl.html(view.render().$el);
+  }
 
 
 })

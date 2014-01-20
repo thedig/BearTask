@@ -19,11 +19,7 @@ MyTrello.Views.BoardNew = Backbone.View.extend({
 				Backbone.history.navigate("/", {trigger: true});
 			}
 		});
-		// var board = new MyTrello.Models.Board(params["board"]);
 
-		// board.save({}, {
-			
-		// });
 	}
 
 });
