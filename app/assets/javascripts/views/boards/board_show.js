@@ -10,18 +10,15 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	render: function() {
-		MyTrello.lists = new MyTrello.Collections.Lists();
-		console.log(this.model);
-		console.log(this.model.get('lists'));
 		var renderedContent = this.template({
-						board_lists: this.model.get('lists'), 
-						board: this.model, 
-						// lists_coll: listsColl
+						board: this.model
 					});
 
 		this.$el.html(renderedContent);
-		// this.renderLists(this.$el);
-		// this.$el.append("<br>HELLO");
+		var that = this;
+		this.model.get('lists').each(function(list){
+			that.$el.append(new MyTrello.Views.ListShow({model: list}).render().$el)
+		});
 		return this;
 	},
 

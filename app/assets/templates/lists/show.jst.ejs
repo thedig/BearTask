@@ -1,0 +1,12 @@
+
+	<a href="#" class="list_link" data-id="<%= list.id %>">
+		<%= list.get('title') %>
+	</a>
+
+	
+		<% list_cards.each(function(card){ %>
+			<div class="cardDiv" id="list<%= list.id %>-card<%= card.id %>">
+			<%= card.get('description') %>
+			</div>
+		<% }) %>
+	

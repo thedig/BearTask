@@ -1,15 +1,2 @@
 <h2><%= board.get('title') %></h2>
 
-
-<% board_lists.each(function(list){ %>
-
-	<div class="listDiv" id="list<%= list.id %>">
-	<a href="#" class="list_link" data-id="<%= list.id %>">
-		<%= list.get('title') %>
-
-	</a>
-
-	</div>
-
-<% }); %>
-
