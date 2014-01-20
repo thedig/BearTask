@@ -2,7 +2,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	template: JST['boards/show'],
 
 	initialize: function() {
-		// this.listenTo(this.model.get('lists'), "add change remove reset", this.render)
+		this.listenTo(this.model.get('lists'), "add change remove reset", this.render)
 	},
 
 	events: {
@@ -17,7 +17,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		var that = this;
 		this.model.get('lists').each(function(list){
-			that.$el.append(new MyTrello.Views.ListShow({model: list}).render().$el)
+			that.$('#listsDiv').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
 		return this;
 	},
