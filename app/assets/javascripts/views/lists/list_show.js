@@ -5,6 +5,15 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		return "list" + this.model.id
 	},
 
+	events: {
+		"click .list_link": "listLink"
+	},
+
+	listLink: function(event) {
+		event.preventDefault();
+		alert('List settings here');
+	},
+
 	render: function() {
 		var renderedContent = this.template({
 						list_cards: this.model.get('cards'), 

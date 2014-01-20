@@ -35,6 +35,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	// showList: function(event) {
 	// 	event.preventDefault();
+	// 	console.log("From board show");	
 	// 	var listId = $(event.currentTarget).data('id');
 	// 	Backbone.history.navigate('boards/' + this.model.id)
 	// }
