@@ -15,8 +15,22 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		var renderedContent = this.template({board_lists: this.model.get('lists'), board: this.model});
 
 		this.$el.html(renderedContent);
+		this.renderLists(this.$el);
+		// this.$el.append("<br>HELLO");
 		return this;
 	},
+
+	renderLists: function(element) {
+		$(".listDiv").remove();
+
+		board_lists = this.model.get('lists');
+
+		board_lists.each(function(list){
+			element.append("<div class='listDiv' id='list" + list.id + "'>" + 
+					list.get('title')
+					 + "</div>")
+		})
+	}
 
 	// showList: function(event) {
 	// 	event.preventDefault();
