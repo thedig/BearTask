@@ -4,7 +4,7 @@ class BoardsController < ApplicationController
 		params[:board][:user_id] = current_user.id
 		@board = Board.new(params[:board])
 		if @board.save
-			redirect_to board_url(@board)
+			render :json => @board
 		else
 			flash.now[:errors] = @user.errors.full_messages
 			render :new
