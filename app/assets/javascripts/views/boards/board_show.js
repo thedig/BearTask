@@ -7,11 +7,18 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	events: {
 		"click #makeNewList": "newList",
-		"click #deleteBoard": "checkDeleteBoard"
+		"click #deleteBoard": "boardDelete"
 	},
 
-	checkDeleteBoard: function(event){
-		alert("Are you sure?") //not an alert - a confirmation - modal? - ID
+	boardDelete: function(event){
+		event.preventDefault();
+		this.model.destroy({
+			success: function() {
+				Backbone.history.navigate("/", {trigger: true});
+			}
+		});
+		
+		//not an alert - a confirmation - modal? - ID
 	},
 
 	newList: function(event) {

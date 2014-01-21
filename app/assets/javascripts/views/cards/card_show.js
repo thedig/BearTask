@@ -5,6 +5,10 @@ MyTrello.Views.CardShow = Backbone.View.extend({
 		return "card" + this.model.get('position')
 	},
 
+	initialize: function() {
+		this.listenTo(this.model, "change reset", this.render)
+	},
+
 	events: {
 		"click .cardLink": "cardOpen"
 	},

@@ -14,8 +14,8 @@ class BoardsController < ApplicationController
 
 	def destroy
 		@board = Board.find(params[:id])
-		@board.destroy!
-		render :json => "Successful delete"
+		@board.destroy
+		render :json => @board
 	end
 
 	def new
