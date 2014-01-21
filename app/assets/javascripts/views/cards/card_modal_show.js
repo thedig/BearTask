@@ -1,7 +1,7 @@
 MyTrello.Views.CardModalShow = Backbone.View.extend({
 	template: JST['cards/modal_show'],
 	className: "cardModalDiv",
-	if: function(){
+	id: function(){
 		return "cardModal" + this.model.get('position')
 	},
 

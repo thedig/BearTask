@@ -6,13 +6,14 @@ MyTrello.Views.CardShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click .card_link": "cardOpen"
+		"click .cardLink": "cardOpen"
 	},
 
 	cardOpen: function(event){
+		event.preventDefault();
 		var cardShow = new MyTrello.Views.CardModalShow({model: this.model});
 		this.$el.append(cardShow.render().$el);
-		this.$el.modal();
+		this.$('#card-modal').modal('show');
 	},
 
 	render: function() {
