@@ -26,8 +26,8 @@ class BoardsController < ApplicationController
 		respond_to do |format|
 			format.html { render :index }
 			# format.json { render :json => Board.all.to_json(:include => :lists)}
-			format.json { render :json => @boards.to_json(:include => { :lists => { :include => :cards }}) }
-
+			# format.json { render :json => @boards.to_json(:include => { :lists => { :include => :cards }}) }
+			format.json { render :json => @boards.to_json(:include => { :lists => { :include => {:cards => { :include => :checklists }}}}) }
 		end
 	end
 

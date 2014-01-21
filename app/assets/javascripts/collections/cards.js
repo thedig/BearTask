@@ -5,7 +5,7 @@ MyTrello.Collections.Cards = Backbone.Collection.extend({
 
 	model: MyTrello.Models.Card,
 	url: function() {
-		return "/lists" + this.list_id + "/cards";
+		return "/lists/" + this.list_id + "/cards";
 	}
 
 })

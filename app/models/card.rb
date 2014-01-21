@@ -14,4 +14,5 @@ class Card < ActiveRecord::Base
   attr_accessible :description, :due_date, :list_id
 
   belongs_to :list
+  has_many :checklists
 end
