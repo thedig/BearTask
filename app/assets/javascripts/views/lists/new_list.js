@@ -5,6 +5,10 @@ MyTrello.Views.NewList = Backbone.View.extend({
 		"submit form": "submit"
 	},
 
+	initialize: function(options) {
+		this.pos_val = options.pos_val;
+	},
+
 	render: function() {
 		this.$el.html(this.template());
 		return this;
@@ -14,7 +18,7 @@ MyTrello.Views.NewList = Backbone.View.extend({
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
-		console.log(this.pos_val);
+		params.list.position = this.pos_val;
 		var list = this.collection.create(params["list"], {
 			parse: true,
 			success: function(){

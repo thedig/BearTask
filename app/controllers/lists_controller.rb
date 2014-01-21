@@ -1,6 +1,7 @@
 class ListsController < ApplicationController
 
 	def create
+		params[:list][:board_id] = params[:board_id]
 		@list = List.new(params[:list])
 		if @list.save
 			render :json => @list

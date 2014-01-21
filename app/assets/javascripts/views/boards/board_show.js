@@ -11,11 +11,15 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	newList: function(event) {
 		event.preventDefault();
-		var position = parseInt($("#allLists div:last").attr('id')[4]) + 1;
-		console.log(position);
+		console.log($("#allLists div:last"));
+		if ($("#allLists div:last")) {
+			var position = parseInt($("#allLists div:last").attr('id')[4]) + 1;
+		} else {
+			var position = 0;
+		}
 		var view = new MyTrello.Views.NewList({
 			collection: this.model.get('lists'),
-			pos_val: position // not passing in?
+			pos_val: position
 		});
 		$(event.currentTarget.parentNode).html(view.render().$el);
 	},
