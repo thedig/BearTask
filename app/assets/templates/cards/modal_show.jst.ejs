@@ -1,12 +1,27 @@
 <div class="modal fade" id="card-modal">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"
-					aria-hidden="true">&times;</button>
-					<h2><%= card.get('description') %></h2>
-					
-			</div>
-		</div>
+<div class="modal-dialog">
+<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal"
+		aria-hidden="true">&times;</button>
+
+	<h2><%= card.get('description') %></h2>
+	<h3>Due: <%= card.get('due_date') %></h3>
 	</div>
+
+	<div class="modal-main">
+
+
+	</div>
+
+	<div class="modal-sidebar">
+
+		<button type="button" class="deleteCard" aria-hidden="true">delete</button>
+
+	</div>
+
+
+
+</div>
+</div>
 </div>

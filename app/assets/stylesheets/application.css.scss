@@ -17,4 +17,30 @@
 
 .allLists {
 	display: inline-block;
-}
+};
+
+.modal-content{
+	width: 600px;
+	display: block;
+};
+
+.modal-header {
+	background-color:lightblue;
+	position: relative;
+};
+
+.modal-main{
+	background-color:lightgray;
+	float: left;
+	width: 450px;
+	min-height: 20px;
+	display: inline;
+};
+
+.modal-sidebar{
+	background-color:lightgreen;
+	float: right;
+	width: 150px;
+	min-height: 20px;
+	display: inline;
+};
