@@ -6,7 +6,7 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	},
 
 	initialize: function(options) {
-		// this.pos_val = options.pos_val;
+		this.pos_val = options.pos_val;
 	},
 
 	render: function(){
@@ -18,7 +18,7 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
-		// params.card.position = this.pos_val
+		params.card.position = this.pos_val
 		var card = this.collection.create(params["card"], {
 			parse: true,
 			success: function(){

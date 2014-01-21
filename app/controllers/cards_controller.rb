@@ -10,6 +10,12 @@ class CardsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@card = Card.find(params[:id])
+		@card.destroy
+		render :json => "Successful delete"
+	end
+
 	def index
 		respond_to do |format|
 			format.html { render :index }

@@ -8,7 +8,7 @@ MyTrello::Application.routes.draw do
   end
 
   resources :lists, only: [:show] do
-  	resources :cards, only: [:index, :create]
+  	resources :cards, only: [:index, :create, :destroy]
 	end
 
 	resources :cards, only: [:show]

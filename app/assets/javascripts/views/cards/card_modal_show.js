@@ -11,6 +11,15 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 
 	cardDelete: function(event){
 		event.preventDefault();
+		// check for delete?
+		this.model.destroy({
+			success: function(model, response){
+				// $(this).find(".close").click();
+				// $.modal.close();
+				// $(".close").click();
+				console.log("maybe?");
+			}
+		});
 	},
 
 	render: function(){
