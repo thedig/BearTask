@@ -17,8 +17,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 				Backbone.history.navigate("/", {trigger: true});
 			}
 		});
-		
-		//not an alert - a confirmation - modal? - ID
+	
 	},
 
 	newList: function(event) {

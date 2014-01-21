@@ -12,23 +12,18 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 
 	cardDelete: function(event){
 		event.preventDefault();
-		// check for delete?
 		this.model.destroy({
 			success: function(model, response){
-				// $(this).find(".close").click();
 				$("#card-modal").modal('hide');
 				$("body").removeClass('modal-open');
 				$('.modal-backdrop').remove();
-				// $(".close").click();
-				console.log(response);
-				// Backbone.history.navigate("#", {trigger: true});
 			}
 		});
 	},
 
 	dueDateChange: function(event){
 		var view = new MyTrello.Views.DueDate({model: this.model});
-		$(#dueField).html(view.render().$el);
+		$(event.currentTarget).find("span").html(view.render().$el);
 	},
 
 	render: function(){
