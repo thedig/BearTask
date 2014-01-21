@@ -12,6 +12,12 @@ class BoardsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@board = Board.find(params[:id])
+		@board.destroy!
+		render :json => "Successful delete"
+	end
+
 	def new
 		render :new
 	end
@@ -19,6 +25,15 @@ class BoardsController < ApplicationController
 	def show
 		@board = Board.find(params[:id])
 		render :show
+	end
+
+	def update
+		@board = Board.find(params[:id])
+		if @board.update_attributes(params[:board])
+			render :json => @board
+		else
+			flash.now[:errors] = @board.errors.full_messages
+		end
 	end
 
 	def index

@@ -6,7 +6,12 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click #makeNewList": "newList"
+		"click #makeNewList": "newList",
+		"click #deleteBoard": "checkDeleteBoard"
+	},
+
+	checkDeleteBoard: function(event){
+		alert("Are you sure?") //not an alert - a confirmation - modal? - ID
 	},
 
 	newList: function(event) {

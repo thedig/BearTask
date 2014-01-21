@@ -1,17 +1,11 @@
 
-	<a href="#" class="list_link" data-id="<%= list.get('position') %>">
-		<%= list.get('title') %>
-	</a>
+<a href="#" class="list_link" data-id="<%= list.get('position') %>">
+	<%= list.get('title') %>
+</a>
 
 	<div id="allCards">
 
-		<% list.get('cards').each(function(card){ %>
-			<div class="cardDiv" id="list<%= list.id %>-card<%= card.id %>">
-			<%= card.get('description') %>
-			</div>
-		<% }) %>
-	
-</div>
+	</div>
 
 <div class="cardDiv" id="addList">
 	<a href="#" id="makeNewCard">Add a card</a>

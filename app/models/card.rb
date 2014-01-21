@@ -12,7 +12,7 @@
 #
 
 class Card < ActiveRecord::Base
-  attr_accessible :description, :due_date, :list_id
+  attr_accessible :description, :due_date, :list_id, :position
 
   belongs_to :list
   has_many :checklists
