@@ -16,22 +16,5 @@ MyTrello.Collections.Lists = Backbone.Collection.extend({
 	parse: function(data){
 		return data;
 	}
-	
+
 })
-
-
-	// comparator: function(item) {
-		// a = a.get(this.sort_key);
-		// b = b.get(this.sort_key);
-		// return a > b ?	1
-		// 		 : a < b ? -1
-		// 		 : 					0;
-	// 	return item.get(this.sort_key);
-	// },
-
-	// sortByField: function(fieldName) {
-	// 	this.sort_key = fieldName;
-	// 	this.sort();
-	// },
-
-	// sort_key = 'id',
