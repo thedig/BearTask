@@ -7,10 +7,11 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 
 	events: {
 		"click .deleteCard": "cardDelete",
-		"click .dueDate": "dueDateChange"
+		"click #dueField": "dueDateChange"
 	},
 
 	cardDelete: function(event){
+		console.log('delete card clicked')
 		event.preventDefault();
 		this.model.destroy({
 			success: function(model, response){
@@ -22,13 +23,13 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 	},
 
 	dueDateChange: function(event){
+		console.log('changing due date')
 		var view = new MyTrello.Views.DueDate({model: this.model});
-		$(event.currentTarget).find("span").html(view.render().$el);
+		$(event.currentTarget.parentNode).html(view.render().$el);
 	},
 
 	render: function(){
 		this.$el.html(this.template({card: this.model}));
-
 		return this;
 	}
 
