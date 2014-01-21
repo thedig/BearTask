@@ -4,7 +4,7 @@ MyTrello::Application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
 
   resources :boards do
-  	resources :lists, only: [:index]
+  	resources :lists, only: [:index, :create]
   end
 
   resources :lists, only: [:show] do

@@ -5,7 +5,7 @@ MyTrello.Collections.Lists = Backbone.Collection.extend({
 
 	model: MyTrello.Models.List,
 	url: function() {
-		return "/boards" + this.board_id + "/lists";
+		return "/boards/" + this.board_id + "/lists";
 	},
 	parse: function(data){
 		return data;

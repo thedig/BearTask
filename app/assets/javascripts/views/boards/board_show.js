@@ -6,7 +6,18 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	events: {
-		// "click .list_link": "showList"
+		"click #makeNewList": "newList"
+	},
+
+	newList: function(event) {
+		event.preventDefault();
+		var position = parseInt($("#allLists div:last").attr('id')[4]) + 1;
+		console.log(position);
+		var view = new MyTrello.Views.NewList({
+			collection: this.model.get('lists'),
+			pos_val: position // not passing in?
+		});
+		$(event.currentTarget.parentNode).html(view.render().$el);
 	},
 
 	render: function() {
@@ -17,20 +28,10 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 		var that = this;
 		this.model.get('lists').each(function(list){
-			that.$('#listsDiv').append(new MyTrello.Views.ListShow({model: list}).render().$el)
+			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
+
 		return this;
-	},
-
-	renderLists: function(element) {
-
-		board_lists = this.model.get('lists');
-
-		board_lists.each(function(list){
-			element.append("<div class='listDiv' id='list" + list.id + "'>" + 
-					list.get('title')
-					 + "</div>")
-		})
 	}
 
 	// showList: function(event) {

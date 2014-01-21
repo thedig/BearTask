@@ -17,11 +17,7 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 	},
 
 	boardNew: function() {
-		var newBoard = new MyTrello.Models.Board();
-		var view = new MyTrello.Views.BoardNew({
-			collection: MyTrello.boards,
-			model: newBoard
-		});
+		var view = new MyTrello.Views.BoardNew();
 		this._swapView(view);	
 	},
 

@@ -2,7 +2,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	template: JST['lists/show'],
 	className: "listDiv",
 	id: function() {
-		return "list" + this.model.id
+		return "list" + this.model.get('position')
 	},
 
 	events: {
@@ -16,7 +16,6 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 	render: function() {
 		var renderedContent = this.template({
-						list_cards: this.model.get('cards'), 
 						list: this.model
 					});
 

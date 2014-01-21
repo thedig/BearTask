@@ -7,8 +7,8 @@ class BoardsController < ApplicationController
 		if @board.save
 			render :json => @board
 		else
-			flash.now[:errors] = @user.errors.full_messages
-			render :new
+			flash.now[:errors] = @board.errors.full_messages
+			# render :new
 		end
 	end
 
