@@ -1,5 +1,14 @@
 class CardsController < ApplicationController
 
+	def create
+		params[:card][:list_id] = params[:list_id]
+		@card = Card.new(params[:card])
+		if @card.save
+			render :json => @card
+		else
+			flash.now[:errors] = @card.errors.full_messages
+		end
+	end
 
 	def index
 		respond_to do |format|

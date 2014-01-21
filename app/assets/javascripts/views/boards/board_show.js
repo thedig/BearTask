@@ -11,7 +11,6 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	newList: function(event) {
 		event.preventDefault();
-		console.log($("#allLists div:last"));
 		if ($("#allLists div:last").length > 0) {
 			var position = parseInt($("#allLists div:last").attr('id')[4]) + 1;
 		} else {
@@ -25,9 +24,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	render: function() {
-		var renderedContent = this.template({
-						board: this.model
-					});
+		var renderedContent = this.template({ board: this.model });
 
 		this.$el.html(renderedContent);
 		var that = this;
@@ -37,13 +34,5 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 		return this;
 	}
-
-	// showList: function(event) {
-	// 	event.preventDefault();
-	// 	console.log("From board show");	
-	// 	var listId = $(event.currentTarget).data('id');
-	// 	Backbone.history.navigate('boards/' + this.model.id)
-	// }
-
 
 })

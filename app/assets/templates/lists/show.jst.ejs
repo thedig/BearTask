@@ -3,10 +3,16 @@
 		<%= list.get('title') %>
 	</a>
 
-	
+	<div id="allCards">
+
 		<% list.get('cards').each(function(card){ %>
 			<div class="cardDiv" id="list<%= list.id %>-card<%= card.id %>">
 			<%= card.get('description') %>
 			</div>
 		<% }) %>
 	
+</div>
+
+<div class="cardDiv" id="addList">
+	<a href="#" id="makeNewCard">Add a card</a>
+</div>

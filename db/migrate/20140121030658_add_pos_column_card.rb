@@ -1,4 +1,4 @@
-class ChangeCardColumn < ActiveRecord::Migration
+class AddPosColumnCard < ActiveRecord::Migration
   def change
   	add_column :cards, :position, :integer
   end

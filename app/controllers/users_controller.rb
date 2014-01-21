@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
 	before_filter :require_current_user!, :only => [:show]
-	before_filter :require_no_current_user!, :only => [:create, :new]
+	# before_filter :require_no_current_user!, :only => [:create, :new]
 	
 	def create
 		@user = User.new(params[:user])
+		p @user
 		if @user.save
 			login!(@user)
 			redirect_to root_url
