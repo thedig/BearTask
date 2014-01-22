@@ -1,5 +1,7 @@
 MyTrello.Views.AddCardShow = Backbone.View.extend({
 	template: JST['cards/add_show'],
+	className: "cardDiv",
+	id: "addCard",
 	events: {
 		"click #makeNewCard": "newCard"
 	},
@@ -12,8 +14,9 @@ MyTrello.Views.AddCardShow = Backbone.View.extend({
 			pos_val: position
 		});
 		this.listenTo(view, "removeAddField", this.render);
+		this.listenTo(view, "failedCardAdd", this.refocus);
 		$(event.currentTarget.parentNode).html(view.render().$el);
-		this.$('#card_description').focus();
+		this.refocus();
 	},
 
 	render: function(){
@@ -21,5 +24,9 @@ MyTrello.Views.AddCardShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 
 		return this;
+	},
+
+	refocus: function () {
+		this.$('#card_description').focus();
 	}
 })

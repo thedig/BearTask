@@ -25,7 +25,6 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	},
 
 	resetTimer: function() {
-		console.log("reset");
 		var that = this;
 		setTimeout(function(){
 			clearTimeout(that.timerId);
@@ -33,13 +32,19 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	},
 
 	submit: function(event){
+		var that = this;
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
 		params.list.position = this.pos_val;
 		var list = this.collection.create(params["list"], {
 			parse: true,
+			validate: true,
 			success: function(){
+				console.log("list save success");
+			},
+			error: function(){
+				that.render;
 			}
 		});
 

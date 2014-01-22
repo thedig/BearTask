@@ -2,9 +2,9 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	template: JST['cards/new'],
 
 	events: {
-		"submit form": "submit",
+		"blur #card_description": "newEvent",
 		"mousedown form": "resetTimer",
-		"blur #card_description": "newEvent"	
+		"submit form": "submit"
 	},
 
 	initialize: function(options) {
@@ -16,7 +16,6 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 		this.timerId = setTimeout(function(){
 			that.trigger("removeAddField");
 		}, 150);
-		
 	},
 
 	render: function(){
@@ -25,7 +24,6 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	},
 	
 	resetTimer: function() {
-		console.log("reset");
 		var that = this;
 		setTimeout(function(){
 			clearTimeout(that.timerId);
@@ -33,13 +31,18 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	},
 
 	submit: function(event){
+		var that = this;
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
-		params.card.position = this.pos_val
+		params.card.position = this.pos_val;
 		var card = this.collection.create(params["card"], {
 			parse: true,
+			validate: true,
 			success: function(){
+			},
+			onFail: function () {
+				that.trigger("failedCardAdd");
 			}
 		});
 	}

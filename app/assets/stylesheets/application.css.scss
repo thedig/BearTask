@@ -19,6 +19,10 @@ div {
 	border-radius: 3px;
 };
 
+a:hover {
+	text-decoration: none;
+};
+
 .allLists {
 	display: inline-block;
 };
@@ -64,8 +68,4 @@ div {
 	margin: 10px;
 	// min-height: 20px;
 	display: inline-block;
-};
-
-a-link {
-	text-decoration: none;	// ??? not working
 };

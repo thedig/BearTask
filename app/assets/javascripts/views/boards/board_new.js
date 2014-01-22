@@ -15,6 +15,7 @@ MyTrello.Views.BoardNew = Backbone.View.extend({
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
 		var board = MyTrello.boards.create(params["board"], {
+			validate: true,
 			success: function(){
 				Backbone.history.navigate("/", {trigger: true});
 			}
