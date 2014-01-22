@@ -6,8 +6,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click .list_link": "listLink",
-		"click #makeNewCard": "newCard"
+		"click .list_link": "listLink"
 	},
 
 	initialize: function(){
@@ -17,17 +16,6 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	listLink: function(event) {
 		event.preventDefault();
 		alert('List settings here');
-	},
-
-	newCard: function(event) {
-		event.preventDefault();
-		var position = this.model.get('cards').length;
-		var view = new MyTrello.Views.NewCard({
-			collection: this.model.get('cards'),
-			pos_val: position
-		});
-		$(event.currentTarget.parentNode).html(view.render().$el);
-
 	},
 
 	render: function() {
@@ -40,6 +28,8 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		this.model.get('cards').each(function(card){
 			that.$('#allCards').append(new MyTrello.Views.CardShow({model: card}).render().$el)
 		});
+
+		that.$('#allCards').append(new MyTrello.Views.AddCardShow({model: this.model}).render().$el)
 
 		return this;
 	}
