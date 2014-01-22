@@ -13,6 +13,8 @@
 class List < ActiveRecord::Base
   attr_accessible :position, :title, :board_id
 
+  validates :title, :position, :board_id, :presence => true
+
   belongs_to :board
   has_many :cards
 
