@@ -14,7 +14,18 @@ MyTrello.Views.CardShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click .cardLink": "cardOpen"
+		"click .cardLink": "cardOpen",
+		"click #deleteCard": "cardDelete"
+	},
+
+	cardDelete: function(event){
+		event.preventDefault();
+		this.model.destroy({
+			success: function() {
+				// Backbone.history.navigate("/", {trigger: true});
+			}
+		});
+	
 	},
 
 	cardOpen: function(event){

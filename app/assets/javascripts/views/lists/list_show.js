@@ -25,7 +25,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 		this.$el.html(renderedContent);
 		var that = this;
-		this.$('#listHeader').append(new MyTrello.Views.ListHeader({model: this.model}).render().$el);
+		this.$('#allCards').before(new MyTrello.Views.ListHeader({model: this.model}).render().$el);
 
 		this.model.get('cards').each(function(card){
 			that.$('#allCards').append(new MyTrello.Views.CardShow({model: card}).render().$el);
