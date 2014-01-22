@@ -12,7 +12,6 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	},
 
 	newEvent: function(){
-		console.log("newEvent");
 		var that = this;
 		this.timerId = setTimeout(function(){
 			that.trigger("removeAddField");
@@ -34,7 +33,6 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	},
 
 	submit: function(event){
-		debugger;
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();

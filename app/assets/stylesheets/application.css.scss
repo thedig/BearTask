@@ -9,11 +9,15 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require jquery.ui.all
  *= require_tree .
  */
 
 @import "bootstrap";
 
+div {
+	border-radius: 5px;
+};
 
 .allLists {
 	display: inline-block;
@@ -60,4 +64,8 @@
 	margin: 10px;
 	// min-height: 20px;
 	display: inline-block;
+};
+
+a-link {
+	text-decoration: none;	// ??? not working
 };

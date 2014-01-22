@@ -14,6 +14,8 @@
 class Card < ActiveRecord::Base
   attr_accessible :description, :due_date, :list_id, :position
 
+  validates :description, :list_id, :position, :presence => true
+
   belongs_to :list
   has_many :checklists
 end
