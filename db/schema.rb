@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20140121235806) do
     t.integer  "list_id",     :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "position",    :null => false
+    t.integer  "position"
   end
 
   create_table "checklists", :force => true do |t|
