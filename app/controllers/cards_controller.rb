@@ -29,6 +29,14 @@ class CardsController < ApplicationController
 		@card = Card.find(params[:id])
 		render :show 
 	end
-		
+	
+	def update
+		@card = Card.find(params[:id])
+		if @card.update_attributes(params[:card])
+			render :json => @card
+		else
+			flash.now[:errors] = @card.errors.full_messages
+		end
+	end
 
 end

@@ -24,6 +24,7 @@ MyTrello.Views.NewList = Backbone.View.extend({
 			success: function(){
 			}
 		});
+
 	}
 
 })
