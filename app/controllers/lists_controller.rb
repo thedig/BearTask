@@ -8,21 +8,33 @@ class ListsController < ApplicationController
 		else
 			flash.now[:errors] = @list.errors.full_messages
 		end
+	end
 
+	def destroy
+		@list = List.find(params[:id])
+		@list.destroy
+		render :json => @list
 	end
 
 	def index
 		respond_to do |format|
 			format.html { render :index }
-			# format.json { render :json => Board.all.to_json(:include => :lists)}
 			format.json { render :json => List.all.to_json(:include => :cards) }
-
 		end
 	end
 
 	def show
 		@list = List.find(params[:id])
 		render :show
+	end
+
+	def update
+		@list = List.find(params[:id])
+		if @list.update_attributes(params[:list])
+			render :json => @list
+		else
+			flash.now[:errors] = @list.errors.full_messages
+		end
 	end
 
 end

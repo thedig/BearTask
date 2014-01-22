@@ -2,7 +2,7 @@ MyTrello.Views.DueDate = Backbone.View.extend({
 	template: JST['cards/duedate'],
 
 	events: {
-		"submit form": "submit"
+		"click #updateDueDate": "submit"
 	},
 
 	render: function(){

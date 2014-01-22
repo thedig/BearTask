@@ -2,11 +2,22 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	template: JST['lists/new'],
 
 	events: {
-		"submit form": "submit"
+		"submit form": "submit",
+		"mousedown form": "resetTimer",
+		"blur #list_title": "newEvent"	
 	},
 
 	initialize: function(options) {
 		this.pos_val = options.pos_val;
+	},
+
+	newEvent: function(){
+		console.log("newEvent");
+		var that = this;
+		this.timerId = setTimeout(function(){
+			that.trigger("removeAddField");
+		}, 150);
+		
 	},
 
 	render: function() {
@@ -14,7 +25,16 @@ MyTrello.Views.NewList = Backbone.View.extend({
 		return this;
 	},
 
+	resetTimer: function() {
+		console.log("reset");
+		var that = this;
+		setTimeout(function(){
+			clearTimeout(that.timerId);
+		}, 10);
+	},
+
 	submit: function(event){
+		debugger;
 		event.preventDefault();
 		var $form = $(event.currentTarget);
 		var params = $form.serializeJSON();
@@ -25,6 +45,8 @@ MyTrello.Views.NewList = Backbone.View.extend({
 			}
 		});
 
-	}
+	},
+
+
 
 })

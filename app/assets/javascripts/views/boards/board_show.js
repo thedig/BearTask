@@ -2,12 +2,14 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	template: JST['boards/show'],
 
 	initialize: function() {
-		this.listenTo(this.model.get('lists'), "add change remove reset", this.render)
+		this.listenTo(this.model.get('lists'), "add change remove reset", this.render);
+
 	},
 
 	events: {
 		"click #makeNewList": "newList",
-		"click #deleteBoard": "boardDelete"
+		"click #deleteBoard": "boardDelete",
+
 	},
 
 	boardDelete: function(event){
@@ -22,16 +24,15 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	newList: function(event) {
 		event.preventDefault();
-		if ($("#allLists div:last").length > 0) {
-			var position = parseInt($("#allLists div:last").attr('id')[4]) + 1;
-		} else {
-			var position = 0;
-		}
+		console.log('here, re-invoking newList');
+		var position = this.model.get('lists').length
 		var view = new MyTrello.Views.NewList({
 			collection: this.model.get('lists'),
 			pos_val: position
 		});
+		this.listenTo(view, "removeAddField", this.render);
 		$(event.currentTarget.parentNode).html(view.render().$el);
+		this.$('#list_title').focus();
 	},
 
 	render: function() {
