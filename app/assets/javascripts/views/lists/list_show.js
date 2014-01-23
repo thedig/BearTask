@@ -7,11 +7,12 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 	events: {
 		"click .list_link": "listLink",
-		"sortstop": "updateCardOrder"
+		"sortstop": "updateCardOrder",
+		"hidden.bs.modal": "render"
 	},
 
 	initialize: function(){
-		this.listenTo(this.model.get('cards'), "add change:title remove reset", this.render)
+		this.listenTo(this.model.get('cards'), "add remove reset", this.render)
 	},
 
 	listLink: function(event) {
@@ -33,7 +34,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		});
 		this.$('#allCards').after(new MyTrello.Views.AddCardShow({model: this.model}).render().$el);
 
-		this.$('#allCards').sortable({ 
+		this.$('#allCards').sortable({
 			opacity: 0.8,
 			cursor: "move",
 			delay: 200,
@@ -49,35 +50,34 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		console.log("card order");
 		var cards_coll = this.model.get('cards'); // can't find this collection?
 		var $movedLi = $(ui.item);
-		
-			console.log("card div verified")
-			var prevEl = cards_coll.get($($movedLi.prev()[0]).data("id"));
-			var nextEl = cards_coll.get($($movedLi.next()[0]).data("id")); 
-			var currentEl = cards_coll.get($(ui.item).data("id"));
-			var startPos, endPos;
-			if (typeof prevEl === 'undefined') {
-				startPos = 0;
-			}	else {
-				startPos = prevEl.get('position');
+
+		var prevEl = cards_coll.get($($movedLi.prev()[0]).data("id"));
+		var nextEl = cards_coll.get($($movedLi.next()[0]).data("id"));
+		var currentEl = cards_coll.get($(ui.item).data("id"));
+		var startPos, endPos;
+		if (typeof prevEl === 'undefined') {
+			startPos = 0;
+		}	else {
+			startPos = prevEl.get('position');
+		}
+
+		if (typeof nextEl === 'undefined') {
+			endPos = startPos + 1;
+		}	else {
+			endPos = nextEl.get('position');
+		}
+
+		var parentListId = $(ui.item).parent().parent().data('id');
+
+		currentEl.set({"position": (startPos + endPos) / 2});
+		currentEl.set({"list_id": parentListId});
+
+		currentEl.save({}, {
+			success: function(){
+				console.log("model saved");
 			}
+		});
 
-			if (typeof nextEl === 'undefined') {
-				endPos = startPos + 1;
-			}	else {
-				endPos = nextEl.get('position');
-			}
-
-			console.log(startPos);
-			console.log(endPos);
-
-			currentEl.set({"position": (startPos + endPos) / 2});
-			console.log(currentEl.get('position'));
-			currentEl.save({}, {
-				success: function(){
-					console.log("model saved");
-				}
-			});
-		
 	}
 
 })

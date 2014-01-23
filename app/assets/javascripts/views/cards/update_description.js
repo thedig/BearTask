@@ -2,15 +2,13 @@ MyTrello.Views.UpdateDescription = Backbone.View.extend({
 	template: JST['cards/update_description'],
 
 	events: {
-	// "click #updateDescription": "submit"
-		"keyUp": "processKey",
+	  "click #descriptionEdit": "focus",
 		"submit form": "submit"
 	},
 
-	processKey: function(e) { 
-	  if(e.which === 13) { // enter key
-	    this.submit();
-	  }
+	focus: function(event){
+		$(event.target).focus();
+		console.log(event.target);
 	},
 
 	render: function(){
@@ -26,7 +24,7 @@ MyTrello.Views.UpdateDescription = Backbone.View.extend({
 		this.model.save({}, {
 			success: function(){
 				console.log("model saved");
-				that.trigger("renderDescription"); // does nothing?
+				//that.trigger("renderDescription"); // does nothing?
 			}
 		});
 	}

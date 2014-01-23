@@ -31,7 +31,7 @@ class ListsController < ApplicationController
 	def update
 		@list = List.find(params[:id])
 		if @list.update_attributes(params[:list])
-			render :json => @list
+			render :json => @list.to_json(:include => :cards)
 		else
 			flash.now[:errors] = @list.errors.full_messages
 		end

@@ -13,7 +13,7 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		this.listenTo(this.model, "change:due_date", this.render);
+		this.listenTo(this.model, "change reset update sync", this.render);
 	},
 
 	cardDelete: function(event){
@@ -39,7 +39,7 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 
 	updateDescription: function(event){
 		var view = new MyTrello.Views.UpdateDescription({model: this.model});
-		$(event.currentTarget).html(view.render().$el);
+		$(event.currentTarget.parentNode).html(view.render().$el);
 	}
 
 });

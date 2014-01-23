@@ -18,7 +18,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 				Backbone.history.navigate("/", {trigger: true});
 			}
 		});
-	
+
 	},
 
 	render: function() {
@@ -26,11 +26,12 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 		this.$el.html(renderedContent);
 		var that = this;
+		that.model.get('lists').sort();
 		this.model.get('lists').each(function(list){
 			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
 		this.$('#allLists').after(new MyTrello.Views.AddListShow({model: this.model}).render().$el)
-		this.$('#allLists').sortable({ 
+		this.$('#allLists').sortable({
 			opacity: 0.8,
 			cursor: "move",
 			delay: 200,
@@ -42,11 +43,12 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	updateListOrder: function(event, ui){
 		console.log("update list order");
+		var that = this;
 		var lists_coll = this.model.get('lists');
 		var $movedLi = $(ui.item);
-			
+
 		var prevEl = lists_coll.get($($movedLi.prev()[0]).data("id"));
-		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id")); 
+		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id"));
 		var currentEl = lists_coll.get($(ui.item).data("id"));
 		var startPos, endPos;
 		if (typeof prevEl === 'undefined') {
@@ -69,6 +71,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		currentEl.save({}, {
 			success: function(){
 				console.log("model saved");
+				that.model.get('lists').sort();
 			}
 		});
 
