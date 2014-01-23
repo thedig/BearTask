@@ -1,13 +1,15 @@
 MyTrello.Views.BoardShow = Backbone.View.extend({
 	template: JST['boards/show'],
+	className: "windowDiv",
 
 	initialize: function() {
 		this.listenTo(this.model.get('lists'), "add change remove reset", this.render);
-
+		this.listenTo(this.model, "change reset update sync", this.render);
 	},
 
 	events: {
 		"click #deleteBoard": "boardDelete",
+		"click .boardTitle": "titleEdit",
 		"sortstop": "updateListOrder"
 	},
 
@@ -22,6 +24,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	render: function() {
+
 		var renderedContent = this.template({ board: this.model });
 
 		this.$el.html(renderedContent);
@@ -30,25 +33,29 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		this.model.get('lists').each(function(list){
 			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
+
 		this.$('#allLists').after(new MyTrello.Views.AddListShow({model: this.model}).render().$el)
 		this.$('#allLists').sortable({
 			opacity: 0.8,
 			cursor: "move",
 			delay: 200,
-			// stop: this.updateOrder
 		});
 
 		return this;
 	},
 
+	titleEdit: function(event){
+		var view = new MyTrello.Views.BoardTitle({model: this.model});
+		$(event.currentTarget.parentNode).html(view.render().$el);
+	},
+
 	updateListOrder: function(event, ui){
-		console.log("update list order");
 		var that = this;
 		var lists_coll = this.model.get('lists');
-		var $movedLi = $(ui.item);
+		var $movedEl = $(ui.item);
 
-		var prevEl = lists_coll.get($($movedLi.prev()[0]).data("id"));
-		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id"));
+		var prevEl = lists_coll.get($($movedEl.prev()[0]).data("id"));
+		var nextEl = lists_coll.get($($movedEl.next()[0]).data("id"));
 		var currentEl = lists_coll.get($(ui.item).data("id"));
 		var startPos, endPos;
 		if (typeof prevEl === 'undefined') {
@@ -63,14 +70,9 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 			endPos = nextEl.get('position');
 		}
 
-		console.log(startPos);
-		console.log(endPos);
-
 		currentEl.set({"position": (startPos + endPos) / 2});
-		console.log(currentEl.get('position'));
 		currentEl.save({}, {
 			success: function(){
-				console.log("model saved");
 				that.model.get('lists').sort();
 			}
 		});

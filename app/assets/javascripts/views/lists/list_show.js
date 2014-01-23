@@ -6,18 +6,19 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click .list_link": "listLink",
+		"click .listTitle": "titleEdit",
 		"sortstop": "updateCardOrder",
 		"hidden.bs.modal": "render"
 	},
 
 	initialize: function(){
-		this.listenTo(this.model.get('cards'), "add remove reset", this.render)
+		this.listenTo(this.model.get('cards'), "add remove reset", this.render);
+		this.listenTo(this.model, "reset change sync", this.render);
 	},
 
-	listLink: function(event) {
-		event.preventDefault();
-		alert('List settings here');
+	titleEdit: function(event) {
+		var view = new MyTrello.Views.ListTitle({model: this.model});
+		$(event.currentTarget.parentNode).html(view.render().$el);
 	},
 
 	render: function() {
@@ -39,7 +40,6 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 			cursor: "move",
 			delay: 200,
 			connectWith: [".cardList"],
-			// stop: this.updateCardOrder
 		 });
 
 		return this;
@@ -47,12 +47,11 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 	updateCardOrder: function(event, ui){
 		event.stopPropagation()
-		console.log("card order");
-		var cards_coll = this.model.get('cards'); // can't find this collection?
-		var $movedLi = $(ui.item);
+		var cards_coll = this.model.get('cards');
+		var $movedEl = $(ui.item);
 
-		var prevEl = cards_coll.get($($movedLi.prev()[0]).data("id"));
-		var nextEl = cards_coll.get($($movedLi.next()[0]).data("id"));
+		var prevEl = cards_coll.get($($movedEl.prev()[0]).data("id"));
+		var nextEl = cards_coll.get($($movedEl.next()[0]).data("id"));
 		var currentEl = cards_coll.get($(ui.item).data("id"));
 		var startPos, endPos;
 		if (typeof prevEl === 'undefined') {
@@ -74,10 +73,8 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 		currentEl.save({}, {
 			success: function(){
-				console.log("model saved");
 			}
 		});
-
 	}
 
 })

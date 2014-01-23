@@ -36,7 +36,7 @@ a:hover {
 	display: inline-block;
 };
 
-.formpage {
+.windowDiv {
 	border: 10px;
 	margin: 20px;
 };
@@ -77,22 +77,39 @@ a:hover {
 	vertical-align: middle;
 };
 
+#card_description{
+	width: 145px;
+};
+
 #dueShow{
 	margin-top: 21px;
+};
+
+#list_title{
+	width: 180px;
+};
+
+#titleDiv{
+	border: 2px solid white;
+	margin-right: 50px;
 };
 
 .boardHeader{
 	display: inline-block;
 	left: 5px;
-	top: 5px;
+	border: 0px;
 	position: relative;
+};
+
+#boardTitle{
+	margin-top: 0px;
+	margin-left: 10px;
 };
 
 .modal-content{
 	width: 550px;
 	position: relative;
 	height: 200px;
-	// display: block;
 };
 
 .modal-header {
@@ -119,4 +136,10 @@ a:hover {
 	margin: 10px;
 	// min-height: 20px;
 	display: inline-block;
+};
+
+.navLi {
+	border: 2px solid white;
+	background-color: lightblue;
+	border-radius: 3px;
 };

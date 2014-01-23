@@ -19,25 +19,27 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 		</button>
-		<a href="<%= root_url %>" class="navbar-brand">BearTasks</a>
+		<div id="titleDiv">
+			<a href="<%= root_url %>" class="navbar-brand">BearTasks</a>
+		</div>
 	</div>
 	<div class="collapse navbar-collapse" id="link_list">
 		<ul class="nav navbar-nav">
 			<% if logged_in? %>
-			<li>
+			<li class="navLi">
 				<a href="<%= root_url %>" id="home_link">Boards</a>
 			</li>
-			<li class="dropdown">
+			<li class="dropdown navLi">
 				<a href="#" class="dropdown_toggle" data-toggle="dropdown">
 					<%= current_user.username %>
 					<b class="caret"></b>
 				</a>
 
 				<ul class="dropdown-menu">
-					<li><a href="<%= user_url(current_user.id) %>">
+					<!-- ><li><a href="<%= user_url(current_user.id) %>">
 						Profile</a></li>
 					<li><a href="#">Settings</a></li>
-					<li class="divider"></li>
+					<li class="divider"></li> -->
 					<li><%= link_to "Log Out", session_url,
 								:method => :delete %> </li>
 				</ul>
@@ -45,10 +47,10 @@
 			</li>
 			<% else %>
 
-			<li class="dropdown">
+			<li class="navLi">
 				<a href="<%= new_session_url %>">Log In</a>
 			</li>
-			<li class="dropdown">
+			<li class="navLi">
 				<a href="<%= new_user_url %>">Sign Up</a>
 			</li>
 

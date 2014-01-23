@@ -30,7 +30,7 @@ class BoardsController < ApplicationController
 	def update
 		@board = Board.find(params[:id])
 		if @board.update_attributes(params[:board])
-			render :json => @board
+			render :json => @board.to_json(:include => { :lists => { :include => {:cards => { :include => :checklists}}}})
 		else
 			flash.now[:errors] = @board.errors.full_messages
 		end
