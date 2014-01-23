@@ -38,8 +38,11 @@ a:hover {
 .deleteButton{
 	background-color: lightblue;
 	color: white;
+	width: 10px;
+	height: 10px;
+	// top: 0px;
+	padding: 0 0 0 0;
 	border: 1px solid gray;
-	left: 5px;
 	border-radius: 2px;
 };
 

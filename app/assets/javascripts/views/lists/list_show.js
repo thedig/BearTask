@@ -11,7 +11,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	},
 
 	initialize: function(){
-		this.listenTo(this.model.get('cards'), "add remove reset", this.render)
+		this.listenTo(this.model.get('cards'), "add change:title remove reset", this.render)
 	},
 
 	listLink: function(event) {
