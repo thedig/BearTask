@@ -10,10 +10,8 @@ MyTrello.Views.ListHeader = Backbone.View.extend({
 		event.preventDefault();
 		this.model.destroy({
 			success: function() {
-				// Backbone.history.navigate("/", {trigger: true});
 			}
 		});
-	
 	},
 
 	render: function(){

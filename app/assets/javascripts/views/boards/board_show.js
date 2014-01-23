@@ -28,8 +28,8 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		this.model.get('lists').each(function(list){
 			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
-
-		that.$('#allLists').append(new MyTrello.Views.AddListShow({model: this.model}).render().$el)
+		this.$('#allLists').after(new MyTrello.Views.AddListShow({model: this.model}).render().$el)
+		this.$('#allLists').sortable({ appendTo: document.body });
 
 		return this;
 	}
