@@ -15,8 +15,9 @@ MyTrello.Views.AddListShow = Backbone.View.extend({
 			pos_val: position
 		});
 		this.listenTo(view, "removeAddField", this.render);
+		this.listenTo(view, "failedListAdd", this.refocus);
 		$(event.currentTarget.parentNode).html(view.render().$el);
-		this.$('#list_title').focus();
+		this.refocus();
 	},
 
 	render: function(){
@@ -24,5 +25,9 @@ MyTrello.Views.AddListShow = Backbone.View.extend({
 		this.$el.html(renderedContent);
 
 		return this;
+	},
+
+	refocus: function () {
+		this.$('#list_title').focus();
 	}
 })
