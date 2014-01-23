@@ -8,6 +8,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	events: {
 		"click #deleteBoard": "boardDelete",
+		"sortstop": "updateOrder"
 	},
 
 	boardDelete: function(event){
@@ -29,9 +30,19 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
 		this.$('#allLists').after(new MyTrello.Views.AddListShow({model: this.model}).render().$el)
-		this.$('#allLists').sortable({ appendTo: document.body });
+		this.$('#allLists').sortable({ 
+			opacity: 0.8,
+			cursor: "move",
+			delay: 200,
+			// connectWith: ".listDiv",
+			stop: this.updateOrder
+		});
 
 		return this;
+	},
+
+	updateOrder: function(){
+		console.log("position???")
 	}
 
 })

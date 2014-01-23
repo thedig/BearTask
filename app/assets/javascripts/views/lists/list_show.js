@@ -6,7 +6,8 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click .list_link": "listLink"
+		"click .list_link": "listLink",
+		"sortstop": "updateOrder"
 	},
 
 	initialize: function(){
@@ -32,9 +33,19 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		});
 
 		this.$('#allCards').after(new MyTrello.Views.AddCardShow({model: this.model}).render().$el);
-		this.$('#allCards').sortable({ appendTo: document.body });
+		this.$('#allCards').sortable({ 
+			opacity: 0.8,
+			cursor: "move",
+			delay: 200,
+			connectWith: [".cardList"],
+			stop: this.updateOrder
+		 });
 
 		return this;
+	},
+
+	updateOrder: function(){
+		console.log("position?")
 	}
 
 })
