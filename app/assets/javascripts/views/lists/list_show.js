@@ -31,7 +31,8 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 			that.$('#allCards').append(new MyTrello.Views.CardShow({model: card}).render().$el);
 		});
 
-		this.$('#allCards').append(new MyTrello.Views.AddCardShow({model: this.model}).render().$el);
+		this.$('#allCards').after(new MyTrello.Views.AddCardShow({model: this.model}).render().$el);
+		this.$('#allCards').sortable({ appendTo: document.body });
 
 		return this;
 	}
