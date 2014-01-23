@@ -4,11 +4,11 @@ class SessionsController < ApplicationController
 
 
 	def create
-		@user = User.find_by_credentials(params[:session][:username], 
+		@user = User.find_by_credentials(params[:session][:username],
 			params[:session][:password])
 		if @user
 			login!(@user)
-			redirect_to root_url
+			redirect_to home_url
 		else
 			flash.now[:errors] = @user.errors.full_messages
 			render :new

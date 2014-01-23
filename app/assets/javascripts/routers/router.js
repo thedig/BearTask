@@ -7,7 +7,6 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 		"": "boardIndex",
 		"boards": "boardIndex",
 		"boards/new": "boardNew",
-		// "boards/:id/edit": "boardEdit",
 		"boards/:id": "boardShow"
 	},
 
@@ -18,7 +17,7 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 
 	boardNew: function() {
 		var view = new MyTrello.Views.BoardNew();
-		this._swapView(view);	
+		this._swapView(view);
 	},
 
 	boardShow: function(id) {
@@ -27,9 +26,9 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 			this.boardIndex();
 		} else {
 			var view = new MyTrello.Views.BoardShow({model: board});
-			this._swapView(view);	
+			this._swapView(view);
 		}
-		
+
 	},
 
   _swapView: function(view){

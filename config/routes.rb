@@ -15,7 +15,8 @@ MyTrello::Application.routes.draw do
     resources :checklists
   end
 
+  get '/home', to: "static#home"
 
-	root to: "static#home"
+	root to: "static#welcome"
 
 end
