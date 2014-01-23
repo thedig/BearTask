@@ -4,7 +4,7 @@
 #
 #  id         :integer          not null, primary key
 #  title      :string(255)      not null
-#  position   :integer          not null
+#  position   :float            not null
 #  board_id   :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null

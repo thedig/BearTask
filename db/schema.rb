@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121235806) do
+ActiveRecord::Schema.define(:version => 20140123010408) do
 
   create_table "board_memberships", :force => true do |t|
     t.integer  "member_id",  :null => false
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20140121235806) do
     t.integer  "list_id",     :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "position"
+    t.float    "position",    :null => false
   end
 
   create_table "checklists", :force => true do |t|
@@ -48,11 +48,12 @@ ActiveRecord::Schema.define(:version => 20140121235806) do
     t.integer  "card_id",    :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.float    "position",   :null => false
   end
 
   create_table "lists", :force => true do |t|
     t.string   "title",      :null => false
-    t.integer  "position",   :null => false
+    t.float    "position",   :null => false
     t.integer  "board_id",   :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
