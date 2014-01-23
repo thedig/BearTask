@@ -15,7 +15,7 @@
 
 @import "bootstrap";
 
-div {
+div .box {
 	border-radius: 3px;
 };
 
@@ -23,12 +23,22 @@ a:hover {
 	text-decoration: none;
 };
 
-.allLists {
-	display: inline-block;
+.fieldGroup {
+	//padding: 10px;
+	border: 3px;
 };
 
 #content{
 	margin: 10px;
+};
+
+.allLists {
+	display: inline-block;
+};
+
+.formpage {
+	border: 10px;
+	margin: 20px;
 };
 
 .cardList{
@@ -36,14 +46,16 @@ a:hover {
 };
 
 .deleteButton{
-	background-color: lightblue;
-	color: white;
-	width: 10px;
-	height: 10px;
+	background-color: #ededed;
+	color: darkgray;
+	width: 12px;
+	height: 12px;
+	float: right;
 	// top: 0px;
 	padding: 0 0 0 0;
-	border: 1px solid gray;
+	border: 1px;
 	border-radius: 2px;
+	font-size: 60%;
 };
 
 .boardHeader{

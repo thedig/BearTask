@@ -1,6 +1,6 @@
 MyTrello.Views.AddCardShow = Backbone.View.extend({
 	template: JST['cards/add_show'],
-	className: "cardDiv",
+	className: "cardDiv box",
 	id: "addCard",
 	events: {
 		"click #makeNewCard": "newCard"

@@ -1,24 +1,26 @@
-<h2>Log In</h2>
+<div class="formpage" id="#logIn">
+	<h2>Log In</h2>
 
 
 <form action="<%= session_url %>" method="POST">
 
-	<input 
-		name="authenticity_token" 
-		type="hidden" 
+	<input
+		name="authenticity_token"
+		type="hidden"
 		value="<%= form_authenticity_token %>">
 
-
-	<label for="username">Username</label>
-	<input type="text" id="username" name="session[username]">
+	<div class="fieldGroup">
+		<label for="username">Username</label>
+		<input type="text" id="username" name="session[username]">
+	</div>
 	<br>
-	<label for="password">Password</label>
-	<input type="password" id="password" name="session[password]">
+	<div class="fieldGroup">
+		<label for="password">Password</label>
+		<input type="password" id="password" name="session[password]">
+	</div>
 	<br>
 	<input type="submit">
 
 </form>
 
-<br>
-
-<%= button_to "Sign Up", new_user_url, :method => :get %>
+</div>

@@ -1,6 +1,6 @@
 MyTrello.Views.ListShow = Backbone.View.extend({
 	template: JST['lists/show'],
-	className: "listDiv",
+	className: "listDiv box",
 	attributes: function(){
 		return {"data-id": this.model.id};
 	},
