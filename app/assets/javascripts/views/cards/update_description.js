@@ -24,7 +24,6 @@ MyTrello.Views.UpdateDescription = Backbone.View.extend({
 		this.model.save({}, {
 			success: function(){
 				console.log("model saved");
-				//that.trigger("renderDescription"); // does nothing?
 			}
 		});
 	}

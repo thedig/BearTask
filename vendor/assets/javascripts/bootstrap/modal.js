@@ -71,7 +71,7 @@
         .addClass('in')
         .attr('aria-hidden', false)
 
-      //that.enforceFocus()
+      that.enforceFocus()
 
       var e = $.Event('shown.bs.modal', { relatedTarget: _relatedTarget })
 
