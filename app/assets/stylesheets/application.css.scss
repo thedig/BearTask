@@ -41,7 +41,7 @@ a:hover {
 	margin: 20px;
 };
 
-.cardList{
+.cardList {
 	min-height: 10px;
 };
 
@@ -58,6 +58,29 @@ a:hover {
 	font-size: 60%;
 };
 
+.deleteCard{
+	width: 100px;
+	height: 40px;
+	background-color: lightgreen;
+	color: #696969;
+	border: 1px;
+	margin-top: 15px;
+};
+
+.descriptionDiv{
+	vertical-align: top;
+};
+
+.dueField{
+	margin: 5px;
+	margin-top: 10px;
+	vertical-align: middle;
+};
+
+#dueShow{
+	margin-top: 21px;
+};
+
 .boardHeader{
 	display: inline-block;
 	left: 5px;
@@ -66,9 +89,9 @@ a:hover {
 };
 
 .modal-content{
-	width: 600px;
+	width: 550px;
 	position: relative;
-	height: 300px;
+	height: 200px;
 	// display: block;
 };
 
@@ -76,6 +99,7 @@ a:hover {
 	background-color:white;
 	position: relative;
 	margin: 10px;
+	height: 70px;
 };
 
 .modal-main{
@@ -83,15 +107,15 @@ a:hover {
 	float: left;
 	width: 60%;
 	height: 100%;
-	margin: 10px;
+	margin: 20px;
 	display: inline-block;
 };
 
 .modal-sidebar{
 	background-color:white;
 	float: right;
-	width: 30%;
-	height: 100px;
+	width: 25%;
+	height: 50px;
 	margin: 10px;
 	// min-height: 20px;
 	display: inline-block;
