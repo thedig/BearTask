@@ -43,9 +43,9 @@ MyTrello.Views.NewList = Backbone.View.extend({
 			success: function(){
 				console.log("list save success");
 			},
-			error: function(){
-				that.render;
-			}
+			// error: function(){
+			// 	that.render;
+			// }
 		});
 
 	},

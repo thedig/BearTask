@@ -46,8 +46,6 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		var $movedLi = $(ui.item);
 		var prevEl = lists_coll.get($($movedLi.prev()[0]).data("id"));
 		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id")); 
-		// var prevModPos = .get('position');
-		// var nextModPos = .get('position');
 		var currentEl = lists_coll.get($(ui.item).data("id"));
 
 		var startPos, endPos;
@@ -63,17 +61,16 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 			endPos = nextEl.get('position');
 		}
 
-
 		console.log(startPos);
 		console.log(endPos);
 
-		// currentEl.set({"position": (prevModPos + nextModPos) / 2});
-		// console.log(currentEl.get('position'));
-		// currentEl.save({}, {
-		// 	success: function(){
-		// 		console.log("model saved");
-		// 	}
-		// });
+		currentEl.set({"position": (startPos + endPos) / 2});
+		console.log(currentEl.get('position'));
+		currentEl.save({}, {
+			success: function(){
+				console.log("model saved");
+			}
+		});
 	}
 
 })
