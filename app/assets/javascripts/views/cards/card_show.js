@@ -6,7 +6,7 @@ MyTrello.Views.CardShow = Backbone.View.extend({
 	},
 
 	attributes: function(){
-		return {"data-id": this.model.get('position')};
+		return {"data-id": this.model.id};
 	},
 
 	initialize: function() {
@@ -24,7 +24,6 @@ MyTrello.Views.CardShow = Backbone.View.extend({
 			success: function() {
 			}
 		});
-	
 	},
 
 	cardOpen: function(event){

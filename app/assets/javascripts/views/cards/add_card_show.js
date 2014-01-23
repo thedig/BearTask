@@ -8,7 +8,7 @@ MyTrello.Views.AddCardShow = Backbone.View.extend({
 
 	newCard: function(event) {
 		event.preventDefault();
-		var position = this.model.get('cards').length
+		var position = this.model.get('cards').length + 1
 		var view = new MyTrello.Views.NewCard({
 			collection: this.model.get('cards'),
 			pos_val: position

@@ -8,7 +8,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	events: {
 		"click #deleteBoard": "boardDelete",
-		"sortstop": "updateOrder"
+		"sortstop": "updateListOrder"
 	},
 
 	boardDelete: function(event){
@@ -34,15 +34,46 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 			opacity: 0.8,
 			cursor: "move",
 			delay: 200,
-			// connectWith: ".listDiv",
-			stop: this.updateOrder
+			// stop: this.updateOrder
 		});
 
 		return this;
 	},
 
-	updateOrder: function(){
-		console.log("position???")
+	updateListOrder: function(event, ui){
+		console.log("update list order");
+		var lists_coll = this.model.get('lists');
+		var $movedLi = $(ui.item);
+		var prevEl = lists_coll.get($($movedLi.prev()[0]).data("id"));
+		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id")); 
+		// var prevModPos = .get('position');
+		// var nextModPos = .get('position');
+		var currentEl = lists_coll.get($(ui.item).data("id"));
+
+		var startPos, endPos;
+		if (typeof prevEl === 'undefined') {
+			startPos = 0;
+		}	else {
+			startPos = prevEl.get('position');
+		}
+
+		if (typeof nextEl === 'undefined') {
+			endPos = startPos + 1;
+		}	else {
+			endPos = nextEl.get('position');
+		}
+
+
+		console.log(startPos);
+		console.log(endPos);
+
+		// currentEl.set({"position": (prevModPos + nextModPos) / 2});
+		// console.log(currentEl.get('position'));
+		// currentEl.save({}, {
+		// 	success: function(){
+		// 		console.log("model saved");
+		// 	}
+		// });
 	}
 
 })

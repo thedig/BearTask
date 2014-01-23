@@ -9,7 +9,7 @@ MyTrello.Views.AddListShow = Backbone.View.extend({
 
 	newList: function(event) {
 		event.preventDefault();
-		var position = this.model.get('lists').length
+		var position = this.model.get('lists').length + 1
 		var view = new MyTrello.Views.NewList({
 			collection: this.model.get('lists'),
 			pos_val: position

@@ -5,9 +5,13 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 		return "list" + this.model.get('position')
 	},
 
+	attributes: function(){
+		return {"data-id": this.model.id};
+	},
+
 	events: {
 		"click .list_link": "listLink",
-		"sortstop": "updateOrder"
+		// "sortstop": "updateOrder"
 	},
 
 	initialize: function(){
@@ -26,13 +30,13 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 
 		this.$el.html(renderedContent);
 		var that = this;
-		this.$('#allCards').before(new MyTrello.Views.ListHeader({model: this.model}).render().$el);
 
+		this.$('#allCards').before(new MyTrello.Views.ListHeader({model: this.model}).render().$el);
 		this.model.get('cards').each(function(card){
 			that.$('#allCards').append(new MyTrello.Views.CardShow({model: card}).render().$el);
 		});
-
 		this.$('#allCards').after(new MyTrello.Views.AddCardShow({model: this.model}).render().$el);
+
 		this.$('#allCards').sortable({ 
 			opacity: 0.8,
 			cursor: "move",
@@ -45,7 +49,7 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	},
 
 	updateOrder: function(){
-		console.log("position?")
+		
 	}
 
 })
