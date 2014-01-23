@@ -1,17 +1,13 @@
 MyTrello.Views.ListShow = Backbone.View.extend({
 	template: JST['lists/show'],
 	className: "listDiv",
-	id: function() {
-		return "list" + this.model.get('position')
-	},
-
 	attributes: function(){
 		return {"data-id": this.model.id};
 	},
 
 	events: {
 		"click .list_link": "listLink",
-		// "sortstop": "updateOrder"
+		"sortstop": "updateCardOrder"
 	},
 
 	initialize: function(){
@@ -42,13 +38,45 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 			cursor: "move",
 			delay: 200,
 			connectWith: [".cardList"],
-			stop: this.updateOrder
+			// stop: this.updateCardOrder
 		 });
 
 		return this;
 	},
 
-	updateOrder: function(){
+	updateCardOrder: function(event, ui){
+		event.stopPropagation()
+		console.log("card order");
+		var cards_coll = this.model.get('cards'); // can't find this collection?
+		var $movedLi = $(ui.item);
+		
+			console.log("card div verified")
+			var prevEl = cards_coll.get($($movedLi.prev()[0]).data("id"));
+			var nextEl = cards_coll.get($($movedLi.next()[0]).data("id")); 
+			var currentEl = cards_coll.get($(ui.item).data("id"));
+			var startPos, endPos;
+			if (typeof prevEl === 'undefined') {
+				startPos = 0;
+			}	else {
+				startPos = prevEl.get('position');
+			}
+
+			if (typeof nextEl === 'undefined') {
+				endPos = startPos + 1;
+			}	else {
+				endPos = nextEl.get('position');
+			}
+
+			console.log(startPos);
+			console.log(endPos);
+
+			currentEl.set({"position": (startPos + endPos) / 2});
+			console.log(currentEl.get('position'));
+			currentEl.save({}, {
+				success: function(){
+					console.log("model saved");
+				}
+			});
 		
 	}
 

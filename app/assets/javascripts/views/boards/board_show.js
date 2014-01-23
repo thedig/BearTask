@@ -44,10 +44,10 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 		console.log("update list order");
 		var lists_coll = this.model.get('lists');
 		var $movedLi = $(ui.item);
+			
 		var prevEl = lists_coll.get($($movedLi.prev()[0]).data("id"));
 		var nextEl = lists_coll.get($($movedLi.next()[0]).data("id")); 
 		var currentEl = lists_coll.get($(ui.item).data("id"));
-
 		var startPos, endPos;
 		if (typeof prevEl === 'undefined') {
 			startPos = 0;
@@ -71,6 +71,7 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 				console.log("model saved");
 			}
 		});
+
 	}
 
 })

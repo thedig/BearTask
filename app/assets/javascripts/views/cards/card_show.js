@@ -1,10 +1,6 @@
 MyTrello.Views.CardShow = Backbone.View.extend({
 	template: JST['cards/show'],
 	className: "cardDiv",
-	id: function(){
-		return "card" + this.model.get('position');
-	},
-
 	attributes: function(){
 		return {"data-id": this.model.id};
 	},
