@@ -1,5 +1,11 @@
 <div id="welcomeDiv" class="windowDiv">
-	<h2> WELCOME </h2>
+	<h1> Welcome </h1>
 
+	<form action="<%= session_url %>" method="POST">
+		<input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+		<input type="hidden" name="session[username]" value="guest">
+		<input type="hidden" name="session[password]" value="guestpassword">
+		<input type="submit" id="guestButton" value="Guest Login">
+	</form>
 
 </div>

@@ -1,11 +1,11 @@
 <h3>My Boards</h3>
 
-<ul>
+<ul id="boardIndexUl">
 	<% boards.each(function(board) { %>
-	<li>
+	<li class="boardLi">
 	<a href="#/boards/<%= board.id %>"><%= board.escape('title') %> </a>
 	</li>
 	<% }); %>
 </ul>
 
-<a href="#/boards/new">New Board</a>
+<span id="newBoard"><a href="#/boards/new">New Board</a></span>
