@@ -3,7 +3,7 @@
 <ul id="boardIndexUl">
 	<% boards.each(function(board) { %>
 	<li class="boardLi">
-	<a href="#/boards/<%= board.escape('slug') %>"><%= board.escape('title') %> </a>
+	<a href="#/boards/<%= board.id %>"><%= board.escape('title') %> </a>
 	</li>
 	<% }); %>
 </ul>
