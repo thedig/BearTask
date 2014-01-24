@@ -21,7 +21,7 @@ MyTrello.Routers.Router = Backbone.Router.extend({
 	},
 
 	boardShow: function(id) {
-		var board = MyTrello.boards.get(id);
+		var board = MyTrello.boards.findWhere({slug: id});
 		if (!board) {
 			this.boardIndex();
 		} else {

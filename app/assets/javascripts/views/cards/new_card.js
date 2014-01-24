@@ -55,6 +55,8 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 			validate: true,
 			success: function(){
 			},
+			error: function () {
+			},
 			onFail: function () {
 				that.trigger("failedCardAdd");
 			}

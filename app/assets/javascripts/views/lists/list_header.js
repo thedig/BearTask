@@ -1,7 +1,7 @@
 MyTrello.Views.ListHeader = Backbone.View.extend({
 	template: JST['lists/header'],
 	id: "listHeader",
-	
+
 	events: {
 		"click #deleteList": "listDelete",
 	},
@@ -10,6 +10,7 @@ MyTrello.Views.ListHeader = Backbone.View.extend({
 		event.preventDefault();
 		this.model.destroy({
 			success: function() {
+
 			}
 		});
 	},

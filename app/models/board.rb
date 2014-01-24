@@ -18,4 +18,8 @@ class Board < ActiveRecord::Base
   has_many :lists
 
   has_many :board_memberships
+
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
+
 end

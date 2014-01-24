@@ -58,6 +58,7 @@ a:hover {
 	//margin-left: 50px;
 	left: 50%;
 	margin-top: 40px;
+	display: inline-block;
 };
 
 .windowDiv {
@@ -139,6 +140,12 @@ a:hover {
 	width: 300px;
 	height: 150px;
 	font-size: x-large;
+};
+
+ul .dropdown-menu {
+	background-clip: border-box;
+	background-color: lightblue;
+	border-radius: 5px;
 };
 
 #boardIndexUl{
