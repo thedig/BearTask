@@ -5,9 +5,6 @@ MyTrello.Models.List = Backbone.Model.extend({
 		return obj;
 	},
 
-
-
-
 	validate: function(attributes, options) {
 		var that = this;
 		var msg;

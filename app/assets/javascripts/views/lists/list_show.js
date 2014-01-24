@@ -19,6 +19,15 @@ MyTrello.Views.ListShow = Backbone.View.extend({
 	titleEdit: function(event) {
 		var view = new MyTrello.Views.ListTitle({model: this.model});
 		$(event.currentTarget.parentNode).html(view.render().$el);
+
+		this.listenTo(view, "removeListTitleField", this.render);
+		this.listenTo(view, "failedListEdit", this.refocus);
+		this.refocus();
+
+	},
+
+	refocus: function(){
+		this.$('#listTitleEdit').focus();
 	},
 
 	render: function() {

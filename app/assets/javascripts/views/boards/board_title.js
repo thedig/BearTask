@@ -15,7 +15,6 @@ MyTrello.Views.BoardTitle = Backbone.View.extend({
 	},
 
 	render: function(){
-		console.log("board title render");
 		this.$el.html(this.template({board: this.model}));
 		return this;
 	},
@@ -30,7 +29,6 @@ MyTrello.Views.BoardTitle = Backbone.View.extend({
 	submit: function(event){
 		var that = this;
 		event.preventDefault();
-		var that = this;
 		var newTitle = $("#boardTitleEdit").val();
 		this.model.set({"title": newTitle});
 		this.model.save({}, {
