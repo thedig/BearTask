@@ -8,7 +8,6 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	},
 
 	events: {
-		"click #deleteBoard": "boardDelete",
 		"click .boardTitle": "titleEdit",
 		"sortstop": "updateListOrder"
 	},
@@ -23,16 +22,17 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 
 	},
 
+	refocus: function(){
+		this.$('#boardTitleEdit').focus();
+	},
+
 	render: function() {
 
 		var renderedContent = this.template({ board: this.model });
-
 		this.$el.html(renderedContent);
 		var that = this;
 		that.model.get('lists').sort();
-
 		this.$('#allLists').before(new MyTrello.Views.BoardHeader({model: this.model}).render().$el);
-
 		this.model.get('lists').each(function(list){
 			that.$('#allLists').append(new MyTrello.Views.ListShow({model: list}).render().$el)
 		});
@@ -50,6 +50,11 @@ MyTrello.Views.BoardShow = Backbone.View.extend({
 	titleEdit: function(event){
 		var view = new MyTrello.Views.BoardTitle({model: this.model});
 		$(event.currentTarget.parentNode).html(view.render().$el);
+
+		this.listenTo(view, "removeBoardTitleField", this.render);
+		this.listenTo(view, "failedBoardEdit", this.refocus);
+		this.refocus();
+
 	},
 
 	updateListOrder: function(event, ui){

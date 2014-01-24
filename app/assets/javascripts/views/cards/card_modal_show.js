@@ -9,7 +9,6 @@ MyTrello.Views.CardModalShow = Backbone.View.extend({
 		"click .deleteCard": "cardDelete",
 		"click #dueShow": "dueDateChange",
 		"click #description": "updateDescription",
-		//"renderDescription": "render"
 	},
 
 	initialize: function(){
