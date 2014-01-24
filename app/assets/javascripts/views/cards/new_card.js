@@ -2,7 +2,7 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	template: JST['cards/new'],
 
 	events: {
-		"blur #card_description": "newEvent",
+		"blur #card_description": "blurForm",
 		"mousedown form": "resetTimer",
 		"submit form": "submit"
 	},
@@ -11,7 +11,7 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 		this.pos_val = options.pos_val;
 	},
 
-	newEvent: function(){
+	blurForm: function(){
 		var that = this;
 		this.timerId = setTimeout(function(){
 			that.trigger("removeAddField");
@@ -22,7 +22,7 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 		this.$el.html(this.template());
 		return this;
 	},
-	
+
 	resetTimer: function() {
 		var that = this;
 		setTimeout(function(){

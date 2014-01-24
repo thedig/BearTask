@@ -2,7 +2,12 @@ MyTrello.Views.BoardTitle = Backbone.View.extend({
 	template: JST['boards/title'],
 
 	events: {
+		"blur #boardTitleEdit": "blurForm",
 		"submit form": "submit"
+	},
+
+	blurForm: function(){
+		console.log("BLUR")
 	},
 
 	render: function(){
