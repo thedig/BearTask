@@ -4,7 +4,8 @@ MyTrello.Views.NewList = Backbone.View.extend({
 	events: {
 		"submit form": "submit",
 		"mousedown form": "resetTimer",
-		"blur #list_title": "newEvent"	
+		"blur #list_title": "newEvent",
+		"keydown #list_title": "processKey"
 	},
 
 	initialize: function(options) {
@@ -16,7 +17,17 @@ MyTrello.Views.NewList = Backbone.View.extend({
 		this.timerId = setTimeout(function(){
 			that.trigger("removeAddField");
 		}, 150);
-		
+
+	},
+
+	processKey: function(e){
+	  if(e.which === 13) {
+	    this.submit(e);
+	  }
+	  if(e.which === 9) {
+	    this.resetTimer();
+	  }
+
 	},
 
 	render: function() {

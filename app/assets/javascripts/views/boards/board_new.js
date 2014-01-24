@@ -1,5 +1,6 @@
 MyTrello.Views.BoardNew = Backbone.View.extend({
 	template: JST['boards/new'],
+	className: "windowDiv",
 
 	events: {
 		"submit form": "submit"

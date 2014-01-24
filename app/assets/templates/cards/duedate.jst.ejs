@@ -1,6 +1,6 @@
 <h4 class="dueField" id="dueInput">Due:
 
-<input type="date" id="dueDate" name="card[due_date]" value="<%= card.get('due_date') %>">
+<input type="date" id="dueDate" name="card[due_date]" value="<%= card.escape('due_date') %>">
 <button id="updateDueDate">Submit</button>
 
 </h4>

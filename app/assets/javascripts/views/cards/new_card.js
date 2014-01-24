@@ -4,18 +4,31 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 	events: {
 		"blur #card_description": "blurForm",
 		"mousedown form": "resetTimer",
-		"submit form": "submit"
+		"submit form": "submit",
+		"keydown #card_description": "processKey"
 	},
 
 	initialize: function(options) {
 		this.pos_val = options.pos_val;
 	},
 
-	blurForm: function(){
+	blurForm: function(e){
 		var that = this;
-		this.timerId = setTimeout(function(){
-			that.trigger("removeAddField");
-		}, 150);
+		if(e.which !== 9) {
+			this.timerId = setTimeout(function(){
+				that.trigger("removeAddField");
+			}, 150);
+		}
+	},
+
+	processKey: function(e){
+	  if(e.which === 13) {
+	    this.submit(e);
+	  }
+	  if(e.which === 9) {
+	    this.resetTimer();
+	  }
+
 	},
 
 	render: function(){
@@ -23,11 +36,12 @@ MyTrello.Views.NewCard = Backbone.View.extend({
 		return this;
 	},
 
-	resetTimer: function() {
+	resetTimer: function(delay) {
 		var that = this;
 		setTimeout(function(){
 			clearTimeout(that.timerId);
 		}, 10);
+
 	},
 
 	submit: function(event){
