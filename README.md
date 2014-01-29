@@ -8,7 +8,7 @@ BearTask is a majority single page application using Backbone to manage MVC cont
 
 ## Testing
 
-Testing pending.
+Testing pending. Will leverage Sauce labs to test javascript across multiple platforms.
 
 `rake spec`
 
@@ -24,6 +24,9 @@ BearTask is deployed through Heroku.
 
 ## More to Come
 
-- _item 1_
-- _item 2_
-- _item 3_
+- _Sidescrolling_
+- _Checklists within Cards_
+- _Facebook sign-in_
+- _Attach files with AWS_
+- _Public/private control_
+- _Placeholder visuals for draggable items_
