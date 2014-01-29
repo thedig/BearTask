@@ -1,54 +1,29 @@
-# _Project_
+# Project
 
-_Description: What does this project do and who does it serve?_
+BearTask is a task management platform, akin to that of Trello. It uses a similar board/list/card structure and has similar drag and drop functionality. 
 
 ## Project Setup
 
-_How do I, as a developer, start working on the project?_ 
-
-1. _What dependencies does it have (where are they expressed) and how do I install them?_
-2. _How can I see the project working before I change anything?_
+BearTask is a majority single page application using Backbone to manage MVC control and give the user the experience of smooth edits without page reload. The Backbone Views functionality is leveraged to render different editing modes, fields and to allow the user to traverse the page seamlessly.
 
 ## Testing
 
-_How do I run the project's automated tests?_
+Testing pending.
 
-### Unit Tests
-
-1. `rake spec`
-
-### Integration Tests
-
-1. _Run other local services / provide credentials for external services._
-2. `rake spec:integration`
+`rake spec`
 
 ## Deploying
 
-### _How to setup the deployment environment_
+BearTask is deployed through Heroku.
 
-- _Required heroku addons, packages, or chef recipes._
-- _Required environment variables or credentials not included in git._
-- _Monitoring services and logging._
+## Used libraries
 
-### _How to deploy_
+- _JQuery UI sortable_
+- _Backbone / Underscore_
+- _Bootstrap_
 
-## Troubleshooting & Useful Tools
+## More to Come
 
-_Examples of common tasks_
-
-> e.g.
-> 
-> - How to make curl requests while authenticated via oauth.
-> - How to monitor background jobs.
-> - How to run the app through a proxy.
-
-## Contributing changes
-
-- _Internal git workflow_
-- _Pull request guidelines_
-- _Tracker project_
-- _Google group_
-- _irc channel_
-- _"Please open github issues"_
-
-## License
+- _item 1_
+- _item 2_
+- _item 3_
