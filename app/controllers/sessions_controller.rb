@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
 			login!(@user)
 			redirect_to home_url
 		else
-			flash.now[:errors] = @user.errors.full_messages
+			flash.now[:errors] = ["Invalid login"]
 			render :new
 		end
 	end
